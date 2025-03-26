@@ -20,7 +20,7 @@ class PermissionManagerServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public $routeFilePath = '/routes/backpack/permissionmanager.php';
+    public $routeFilePath = '/routes/permissionmanager.php';
 
     /**
      * Perform post-registration booting of services.
