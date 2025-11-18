@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 
 class RemoveBackpackuserModel extends Migration
 {
@@ -18,15 +19,15 @@ class RemoveBackpackuserModel extends Migration
         $model_has_permissions = config('permission.table_names.model_has_permissions');
 
         // replace the BackpackUser model with User
-        if (\Illuminate\Support\Facades\Schema::hasTable($model_has_roles)) {
+        if (Schema::hasTable($model_has_roles)) {
             $this->replaceModels($model_has_roles);
         }
-        if (\Illuminate\Support\Facades\Schema::hasTable($model_has_permissions)) {
+        if (Schema::hasTable($model_has_permissions)) {
             $this->replaceModels($model_has_permissions);
         }
     }
 
-    public function replaceModels($table_name)
+    public function replaceModels($table_name): void
     {
         Log::info('Replacing BackpackUser model in '.$table_name);
 
